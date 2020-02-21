@@ -8,7 +8,6 @@ cc.Class({
     start() {
         GM.uiShader = this;
         this.initUi();
-        // window.initMsg = require("initMsg")
         this.anaLogic();
         this.addEvents();
     },
@@ -27,7 +26,6 @@ cc.Class({
         this.lb_path.setLabel(aDic.path);
         this.lb_desc.setLabel(aDic.desc);
     },
-
     addEvents () {
         var self = this;
         this.btn_next.quickBt(function () {
@@ -39,6 +37,11 @@ cc.Class({
             if (self.before_func) {
                 self.before_func();
             }
+        });
+
+        this.btn_home.quickBt(function () {
+            self.touchClose(true);
+            initMsg.backHall();
         });
     },
     // ### 滑动条

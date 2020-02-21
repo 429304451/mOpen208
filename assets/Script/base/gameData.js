@@ -46,6 +46,8 @@ cc.Class({
 
         this.autoReadSave("mName");     // 昵称
         this.autoReadSave("mHead");     // 头像url
+
+        this.autoReadSave("pluasOneMaxScore");  // 点我+1 游戏的最高分
     },
 
     initGameData(){
@@ -64,6 +66,8 @@ cc.Class({
 
         this.undefinedOrSet("mName", "white")
         this.undefinedOrSet("mHead", "")
+
+        this.undefinedOrSet("pluasOneMaxScore", 0)
 
         // console.log("initGameData", this);
     }

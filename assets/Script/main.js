@@ -5,11 +5,14 @@ cc.Class({
     onLoad () {
         GM.mainScene = this;
         wxUtil.setKeepScreenOn();
+        util.init();
     },
     start () {
-        util.init();
+        FLUIManager.open("hall/uiHall");
         // FLUIManager.open("game/uiGame");
-        FLUIManager.open("shader/uiShader");
+        // FLUIManager.open("shader/uiShader");
+        // FLUIManager.open("games/chengyu/uiChengyu");  // 成语小游戏
+        // FLUIManager.open("games/plusOne/uiPlusOne");
     },
     
 });

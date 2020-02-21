@@ -117,7 +117,11 @@ cc.Node.prototype.quickBt = function(fn, touchSilence, Shield) {
         if (!touchSilence) {
             this.setScale(this.BeganScale_);
             this.opacity = this.BeganOpacity_;
-            util.SoundClick();
+            if (this.soundStr) {
+                util.playSound(this.soundStr);
+            } else {
+                util.SoundClick();
+            }
         };
         if (!Shield) {
             var now = util.getNow();
@@ -482,7 +486,7 @@ util.mlog = function () {
 
     var node = new cc.Node("loadText");
     var label = node.addComponent(cc.Label);
-    node.color = new cc.Color(80, 19, 0);
+    node.color = cc.Color(80, 19, 0);
     node.position = cc.v2(cc.winSize.width / 2, util.PrintPosDiff * 30);
     label.fontSize = 30;
     label.Font = "黑体"
@@ -1224,7 +1228,7 @@ FLUIManager.closeAllDlg = function () {
  * @param {Function} callBack 成功回调 
  * @param {Bool} clear 清除界面,默认不清除界面 
  */
-FLUIManager.close = function(uiPath, callBack, clear) {
+FLUIManager.close = function(uiPath, clear, callBack) {
     for (var i = FLUIManager.uiList.length - 1; i >= 0; i--) {
         var temp = FLUIManager.uiList[i];
         if (temp && (temp.pathName === uiPath || (typeof (uiPath) == "object" && temp === uiPath.node))) {
@@ -1825,9 +1829,9 @@ window.baseNode = cc.Class({
             util.mShow(this);
         }
     },
-    touchClose() {
+    touchClose(isClear) {
         this.nowInShow = false;
-        FLUIManager.close(this);
+        FLUIManager.close(this, isClear);
     },
     hide () {
         this.node.zIndex = 0;

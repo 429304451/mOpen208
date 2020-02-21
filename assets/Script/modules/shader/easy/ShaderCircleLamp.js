@@ -10,29 +10,34 @@ aDic.init = function (uiShader) {
 uniform mat4 viewProj;
 attribute vec3 a_position;
 attribute vec2 a_uv0;
-varying vec2 uv0;
+varying vec2 v_texCoord;
 void main () {
     vec4 pos = viewProj * vec4(a_position, 1);
     gl_Position = pos;
-    uv0 = a_uv0;
+    v_texCoord = a_uv0;
 }`;
     let mFrag = `
 uniform sampler2D texture;
-varying vec2 uv0;
+varying vec2 v_texCoord;
 
 uniform float num1;
 uniform float num2;
 uniform vec3 pos;
 
-void main () {
-    vec4 mycolor = texture2D(texture, v_texCoord);
-    float colorvalue = (mycolor.r+mycolor.g+mycolor.b)/3.;
-    if (colorvalue >= waterwid && colorvalue < deepwid) {
-        mycolor = vec4(0.,0.,0.,2.*pos.x);
-    } else {
-        mycolor = vec4(2.*pos.y);
+void main() {
+    float MyPos = num1;
+    float scale = sqrt(1.-pow(1./MyPos*abs(v_texCoord.x-MyPos),2.));
+    float where = v_texCoord.x-pos.x;
+    if (where < 0. || where > 1.) {
+        where = mod(where,1.);
     }
-    gl_FragColor = mycolor;
+
+    float WY = 1./scale*(v_texCoord.y-(1.-scale)*0.5 );
+    vec4 myColor = texture2D(texture, vec2(where,WY) );
+    if ( abs(v_texCoord.y-0.5) < scale/2.   )
+    {
+        gl_FragColor = myColor;
+    }
 }
 `
     var lab = {

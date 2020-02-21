@@ -5,6 +5,10 @@ initMsg.dt3 = 0.0125;
 initMsg.dt4 = 0.0111;
 initMsg.white = "white"
 
+initMsg.backHall = function () {
+	FLUIManager.open("hall/uiHall");
+}
+
 // ### 一些图片路径定义
 initMsg.imgPath = {
 	frozen: "big/frozen",
@@ -46,7 +50,7 @@ initMsg.shaderOrdinaryTab = [
 
 // test-ShaderOutShine
 
-initMsg.nowShader = "ShaderSmoke";
+initMsg.nowShader = "ShaderCircleLamp";
 initMsg.hasAddSdTouch = false;
 
 initMsg.useModel = function (useModel) {
@@ -116,6 +120,44 @@ initMsg.useColorTab = [
     [cc.color(0,154,255), cc.color(0,255,215)],
 ];
 
+// ### uiChengyu 成语游戏
+initMsg.peiGuan = false;  // 是否处于配置关卡模式
+// ### 游戏 点我+1
+initMsg.plusOneColors = {
+    startBg: cc.color(89,69,61),
+    overBg: cc.color(89,69,61),
+    gameBg: cc.color(89,69,61),
+    topBg: cc.color(166,137,124),
+    tileBg: cc.color(166,137,124),
+    powerBarBg: cc.color(166,137,124),
+    power: cc.color(100,107,48),
 
+    num1: cc.color(217,202,184),
+    num2: cc.color(197,167,128),
+    num3: cc.color(166,133,104),
+    num4: cc.color(115,86,69),
+    num5: cc.color(64,40,32),
+    num6: cc.color(115,100,56),
+    num7: cc.color(140,89,70),
+    num8: cc.color(115,56,50),
+    num9: cc.color(115,32,32),
+    num10: cc.color(115,103,88),
+    num11: cc.color(140,121,97),
+    num12: cc.color(191,146,107),
+    num13: cc.color(191,140,11),
+    num14: cc.color(213,185,112),
+    num15: cc.color(174,122,98),
+    num16: cc.color(181,91,82),
+    num17: cc.color(107,86,85),
+    num18: cc.color(73,58,61),
+    num19: cc.color(176,125,98),
+    num20: cc.color(232,171,127),
+    nums: cc.color(222,153,36)
+};
+
+initMsg.plusOneDF = {
+    score: 0,
+    combo:0,
+};
 
 module.exports = initMsg;
