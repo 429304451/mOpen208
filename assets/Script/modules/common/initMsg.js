@@ -48,10 +48,18 @@ initMsg.shaderOrdinaryTab = [
 	"ShaderFace",      // 随手写的脸动效果
 ];
 
-// test-ShaderOutShine
-
 initMsg.nowShader = "ShaderCircleLamp";
 initMsg.hasAddSdTouch = false;
+
+initMsg.init = function () {
+	initMsg.shaderAllTab = [];
+	for (let i = 0; i < initMsg.shaderOrdinaryTab.length; i++) {
+		initMsg.shaderAllTab.push(initMsg.shaderOrdinaryTab[i]);
+	}
+	for (let j = 0; j < initMsg.shaderEasyTab.length; j++) {
+		initMsg.shaderAllTab.push(initMsg.shaderEasyTab[j]);
+	}
+}
 
 initMsg.useModel = function (useModel) {
 	// 0-默认显示两张图片比对 1-只使用一张图片 2-使用add模式

@@ -6,6 +6,7 @@ cc.Class({
         GM.mainScene = this;
         wxUtil.setKeepScreenOn();
         util.init();
+        initMsg.init();
     },
     start () {
         FLUIManager.open("hall/uiHall");

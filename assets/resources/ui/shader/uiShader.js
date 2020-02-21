@@ -7,6 +7,9 @@ cc.Class({
     },
     start() {
         GM.uiShader = this;
+
+        initMsg.nowShader = initMsg.shaderAllTab[0];
+
         this.initUi();
         this.anaLogic();
         this.addEvents();
@@ -17,6 +20,7 @@ cc.Class({
         this.sld_1 = this.slider_1.getComponent(cc.Slider);
         this.sld_2 = this.slider_2.getComponent(cc.Slider);
         this.needUpdate = false;
+        this.nowIndex = 0;
     },
     // 逻辑解析
     anaLogic () {
@@ -42,6 +46,24 @@ cc.Class({
         this.btn_home.quickBt(function () {
             self.touchClose(true);
             initMsg.backHall();
+        });
+
+        this.btn_a_next.quickBt(function () {
+            self.nowIndex += 1;
+            if (self.nowIndex > initMsg.shaderAllTab.length - 1) {
+                self.nowIndex = 0;
+            }
+            initMsg.nowShader = initMsg.shaderAllTab[self.nowIndex];
+            self.anaLogic();
+        });
+
+        this.btn_a_before.quickBt(function () {
+            self.nowIndex -= 1;
+            if (self.nowIndex < 0) {
+                self.nowIndex = initMsg.shaderAllTab.length - 1;
+            }
+            initMsg.nowShader = initMsg.shaderAllTab[self.nowIndex];
+            self.anaLogic();
         });
     },
     // ### 滑动条
