@@ -9,9 +9,13 @@ cc.Class({
         initMsg.init();
     },
     start () {
-        FLUIManager.open("hall/uiHall");
+        if (initMsg.inTest) {
+            FLUIManager.open("shader/uiShader");
+        } else {
+            FLUIManager.open("hall/uiHall");
+        }
         // FLUIManager.open("game/uiGame");
-        // FLUIManager.open("shader/uiShader");
+        
         // FLUIManager.open("games/chengyu/uiChengyu");  // 成语小游戏
         // FLUIManager.open("games/plusOne/uiPlusOne");
     },

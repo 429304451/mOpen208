@@ -7,9 +7,6 @@ cc.Class({
     },
     start() {
         GM.uiShader = this;
-
-        initMsg.nowShader = initMsg.shaderAllTab[0];
-
         this.initUi();
         this.anaLogic();
         this.addEvents();
@@ -21,6 +18,9 @@ cc.Class({
         this.sld_2 = this.slider_2.getComponent(cc.Slider);
         this.needUpdate = false;
         this.nowIndex = 0;
+        if (initMsg.inTest == false) {
+            initMsg.nowShader = initMsg.shaderAllTab[0];
+        }
     },
     // 逻辑解析
     anaLogic () {
@@ -48,23 +48,26 @@ cc.Class({
             initMsg.backHall();
         });
 
-        this.btn_a_next.quickBt(function () {
-            self.nowIndex += 1;
-            if (self.nowIndex > initMsg.shaderAllTab.length - 1) {
-                self.nowIndex = 0;
-            }
-            initMsg.nowShader = initMsg.shaderAllTab[self.nowIndex];
-            self.anaLogic();
-        });
+        if (initMsg.inTest == false) {
+            this.btn_a_next.quickBt(function () {
+                self.nowIndex += 1;
+                if (self.nowIndex > initMsg.shaderAllTab.length - 1) {
+                    self.nowIndex = 0;
+                }
+                initMsg.nowShader = initMsg.shaderAllTab[self.nowIndex];
+                self.anaLogic();
+            });
 
-        this.btn_a_before.quickBt(function () {
-            self.nowIndex -= 1;
-            if (self.nowIndex < 0) {
-                self.nowIndex = initMsg.shaderAllTab.length - 1;
-            }
-            initMsg.nowShader = initMsg.shaderAllTab[self.nowIndex];
-            self.anaLogic();
-        });
+            this.btn_a_before.quickBt(function () {
+                self.nowIndex -= 1;
+                if (self.nowIndex < 0) {
+                    self.nowIndex = initMsg.shaderAllTab.length - 1;
+                }
+                initMsg.nowShader = initMsg.shaderAllTab[self.nowIndex];
+                self.anaLogic();
+            });
+        }
+        
     },
     // ### 滑动条
     slideOne(slider) {

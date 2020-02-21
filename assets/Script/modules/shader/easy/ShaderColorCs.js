@@ -1,7 +1,7 @@
 var aDic = {}
 aDic.desc = "获取像素颜色区间";
 // 如果没有指明图片 默认使用的双图片对比 
-aDic.path = "easy/ShaderIce"; // 路径 为便于查找
+aDic.path = "easy/ShaderColorCs"; // 路径 为便于查找
 aDic.init = function (uiShader) {
     // ## 使用两张图片 一张图片 还是额外的展示
     initMsg.useModel(0);

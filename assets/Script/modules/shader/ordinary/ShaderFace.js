@@ -1,5 +1,5 @@
 var aDic = {}
-aDic.desc = "随手写的脸动效果";
+aDic.desc = "随手写的脸动效果\n鼠标点击移动看看";
 // 如果没有指明图片 默认使用的双图片对比 
 aDic.path = "ordinary/ShaderFace"; // 路径 为便于查找
 aDic.init = function (uiShader) {

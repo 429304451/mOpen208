@@ -48,10 +48,11 @@ initMsg.shaderOrdinaryTab = [
 	"ShaderFace",      // 随手写的脸动效果
 ];
 
-initMsg.nowShader = "ShaderCircleLamp";
+initMsg.nowShader = "ShaderColorCs";
 initMsg.hasAddSdTouch = false;
 
 initMsg.init = function () {
+	initMsg.inTest = false;
 	initMsg.shaderAllTab = [];
 	for (let i = 0; i < initMsg.shaderOrdinaryTab.length; i++) {
 		initMsg.shaderAllTab.push(initMsg.shaderOrdinaryTab[i]);

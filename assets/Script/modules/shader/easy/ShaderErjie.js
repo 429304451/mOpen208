@@ -264,7 +264,7 @@ aDic.addTouch = function () {
 }
 
 aDic.changePos = function (pos) {
-    console.log("pos", pos);
+    // console.log("pos", pos);
     let x = pos.x/GM.uiShader.sp_sd.width;
     let y = pos.y/GM.uiShader.sp_sd.height;
     GM.uiShader.lb_fuzhu.setLabel("x:"+x.toFixed(2)+" y:"+y.toFixed(2))
